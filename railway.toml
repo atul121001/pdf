@@ -1,0 +1,10 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "npm run start:api"
+restartPolicyType = "always"
+
+[env]
+NODE_ENV = "production"
+PORT = "3000"
