@@ -23,12 +23,19 @@ app.use(express.static(distPath));
 // API routes are already handled by createServer()
 
 // Catch-all handler: send back React's index.html file for any non-API routes
-app.get("*", (req, res) => {
-  // Don't serve index.html for API routes
+// Use a middleware approach instead of Express 5's problematic wildcard
+app.use((req, res, next) => {
+  // Skip if it's an API route
   if (req.path.startsWith("/api/") || req.path.startsWith("/health")) {
-    return res.status(404).json({ error: "API endpoint not found" });
+    return next();
   }
 
+  // Skip if it's a static file (has file extension)
+  if (path.extname(req.path)) {
+    return next();
+  }
+
+  // Serve index.html for all other routes (React Router)
   const indexPath = path.join(distPath, "index.html");
   console.log("📄 Serving index.html from:", indexPath);
 
