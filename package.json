@@ -18,6 +18,8 @@
     "start": "node dist/server/node-build.mjs",
     "start:api": "tsx server/railway-server.ts",
     "start:fullstack": "tsx server/railway-fullstack.ts",
+    "start:simple": "tsx server/railway-simple.ts",
+    "start:test": "tsx server/railway-test.ts",
     "build:api": "tsc server/railway-server.ts --outDir dist/api --target es2022 --module esnext --moduleResolution bundler",
     "test": "vitest --run",
     "format.fix": "prettier --write .",

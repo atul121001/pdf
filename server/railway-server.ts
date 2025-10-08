@@ -8,6 +8,15 @@ app.get("/health", (_req, res) => {
   res.json({ status: "ok", service: "PDF API" });
 });
 
+// Root route for testing
+app.get("/", (_req, res) => {
+  res.json({
+    message: "PDF API Server is running!",
+    endpoints: ["/api/ping", "/api/demo", "/api/generate-pdf", "/health"],
+    timestamp: new Date().toISOString()
+  });
+});
+
 app.listen(port, () => {
   console.log(`🚀 PDF API server running on port ${port}`);
   console.log(`🔧 API: http://localhost:${port}/api`);
