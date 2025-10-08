@@ -17,6 +17,7 @@
     "build:server": "vite build --config vite.config.server.ts",
     "start": "node dist/server/node-build.mjs",
     "start:api": "tsx server/railway-server.ts",
+    "start:fullstack": "tsx server/railway-fullstack.ts",
     "build:api": "tsc server/railway-server.ts --outDir dist/api --target es2022 --module esnext --moduleResolution bundler",
     "test": "vitest --run",
     "format.fix": "prettier --write .",

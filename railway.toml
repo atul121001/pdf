@@ -2,7 +2,7 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = "npm run start:api"
+startCommand = "npm run start:fullstack"
 restartPolicyType = "always"
 
 [env]
