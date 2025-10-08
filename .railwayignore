@@ -1,0 +1,12 @@
+# Ignore large webviewer files (not needed for server-side PDF generation)
+public/webviewer/
+*.pdf
+.DS_Store
+node_modules/
+*.log
+.git/
+dist/
+build/
+
+# Keep only essential files for Railway deployment
+# The server can generate PDFs without the webviewer assets
