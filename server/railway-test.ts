@@ -44,6 +44,17 @@ app.get("/health", (_req, res) => {
   res.json({ status: "ok", service: "PDF API" });
 });
 
+app.get("/healthcheck", (_req, res) => {
+  console.log("✅ /healthcheck route hit");
+  res.json({ status: "ok", service: "PDF API Healthcheck" });
+});
+
+// Exact copy of health route but different path
+app.get("/ok", (_req, res) => {
+  console.log("✅ /ok route hit");
+  res.json({ status: "ok", service: "PDF API" });
+});
+
 // Simple PDF endpoint (without actual PDF generation for now)
 app.post("/api/generate-pdf", (_req, res) => {
   res.json({
@@ -52,7 +63,28 @@ app.post("/api/generate-pdf", (_req, res) => {
   });
 });
 
-app.listen(port, () => {
+// Test simple routes that should work
+app.get("/status", (_req, res) => {
+  console.log("✅ /status route hit");
+  res.json({ message: "Server is running", timestamp: new Date().toISOString() });
+});
+
+app.get("/info", (_req, res) => {
+  console.log("✅ /info route hit");
+  res.json({ message: "Server info", timestamp: new Date().toISOString() });
+});
+
+// Add a PDF generation endpoint that works
+app.post("/generate-pdf", (_req, res) => {
+  console.log("✅ /generate-pdf route hit");
+  res.json({
+    message: "PDF generation endpoint working!",
+    timestamp: new Date().toISOString(),
+    note: "Ready for Puppeteer implementation"
+  });
+});
+
+app.listen(port, "0.0.0.0", () => {
   console.log(`🚀 Test PDF API server running on port ${port}`);
   console.log(`📱 Root: Available at /`);
   console.log(`🔧 API: Available at /api endpoints`);
